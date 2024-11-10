@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شهادة التخرج</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="certificate-container">
+        <div class="certificate">
+            <h1>شهادة تخرج</h1>
+            <p class="certificate-message" id="message"></p>
+            <p class="certificate-footer">نتمنى للطالب التوفيق والنجاح في مسيرته المستقبلية</p>
+            <button onclick="printCertificate()" class="print-button">طباعة الشهادة</button>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const studentName = urlParams.get('name');
+        const messageElement = document.getElementById('message');
+
+        if (studentName) {
+            messageElement.innerText = `نؤكد أن الطالب ${studentName} قد تخرج من دورة المساح العراقي.`;
+        } else {
+            messageElement.innerText = "عذراً، لم يتم العثور على اسم الطالب.";
+        }
+
+        function printCertificate() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
